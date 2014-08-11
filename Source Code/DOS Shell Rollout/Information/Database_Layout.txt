@@ -1,0 +1,15 @@
+Database:
+
+CommerceIT_DOS_Shell_Rollout.mdf
+
+Tables:
+
+DOS Transactions
+----------------
+Transaction_ID (String) - Primary Key
+Transaction_Command (String) - DOS Shell Command
+Transaction_Ranking (String) - Order in Which Command will be Applied
+Transaction_Modifier (String) - Person who last modified this command
+Transaction_Date (String) - Date of last modification to this command
+Transaction_Time (String) - Time of last modification to this command
+Transaction_Active (String) - Whether or not this command should still be applied

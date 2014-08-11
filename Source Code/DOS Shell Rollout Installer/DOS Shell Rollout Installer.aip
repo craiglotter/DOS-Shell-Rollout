@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DOCUMENT type="Advanced Installer" version="1.9" modules="professional" RootPath=".">
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
+    <ROW Property="CTRLS" Value="3"/>
+    <ROW Property="ProductCode" Value="{511A237A-04A5-471B-8B94-DD1E56E58FFE}"/>
+    <ROW Property="ALLUSERS" Value="2"/>
+    <ROW Property="ARPPRODUCTICON" Value="controlPanelIcon.exe"/>
+    <ROW Property="BannerBitmap" Value="installer_background.jpg"/>
+    <ROW Property="DialogBitmap" Value="installer_background_dialog.jpg"/>
+    <ROW Property="Manufacturer" Value="Craig Lotter"/>
+    <ROW Property="ProductLanguage" Value="1033"/>
+    <ROW Property="ProductVersion" Value="1.0.0"/>
+    <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
+    <ROW Property="UpgradeCode" Value="{862EF2D8-1628-4AE4-9F60-29BDD9794929}"/>
+    <ROW Property="ProductName" Value="DOS Shell Rollout"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiDirsComponent">
+    <ROW Directory="Inputs_DIR" Directory_Parent="TARGETDIR" DefaultDir="Inputs"/>
+    <ROW Directory="StartupFolder" Directory_Parent="TARGETDIR" DefaultDir="Startu~1|StartupFolder" IsPseudoRoot="1"/>
+    <ROW Directory="TARGETDIR" Directory_Parent="" DefaultDir="SourceDir"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
+    <ROW Component="Application_Icon.ico" ComponentId="{DF5CB160-6BAC-4C18-8583-ED9A1783AA93}" Directory_="Inputs_DIR" Attributes="0" Condition="" KeyPath="Splash_Image.jpg" FullKeyPath="TARGETDIR\Inputs"/>
+    <ROW Component="Application_Loader.exe" ComponentId="{3DA818D7-FCF7-409E-960D-1D5EACDBAFFE}" Directory_="TARGETDIR" Attributes="0" Condition="" KeyPath="Application_Loader.exe" FullKeyPath="TARGETDIR\Application_Loader.exe"/>
+    <ROW Component="DOS_Shell_Rollout.exe" ComponentId="{28580165-DCDF-4876-8CF4-27148B585574}" Directory_="TARGETDIR" Attributes="0" Condition="" KeyPath="DOS_Shell_Rollout.exe" FullKeyPath="TARGETDIR\DOS Shell Rollout.exe"/>
+    <ROW Component="config.ini" ComponentId="{9B5B16FD-5512-43ED-BAEA-5F06553BB77E}" Directory_="TARGETDIR" Attributes="0" Condition="" KeyPath="config.ini" FullKeyPath="TARGETDIR"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
+    <ROW Feature="MainFeature" Feature_Parent="" Title="MainFeature" Description="Description" Display="2" Level="1" Directory_="TARGETDIR" Attributes="0" Components="config.ini DOS_Shell_Rollout.exe Application_Icon.ico Application_Loader.exe"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
+    <ROW File="Application_Loader.exe" Component_="Application_Loader.exe" FileName="Applic~1.exe|Application_Loader.exe" Version="" Language="" Attributes="" SourcePath="..\DOS Shell Rollout\Required Files\Application_Loader.exe" SelfReg="false"/>
+    <ROW File="Description.txt" Component_="config.ini" FileName="Descri~1.txt|Description.txt" Version="" Language="" Attributes="" SourcePath="..\DOS Shell Rollout\Required Files\Description.txt" SelfReg="false"/>
+    <ROW File="Splash_Image.jpg" Component_="Application_Icon.ico" FileName="Splash~1.jpg|Splash_Image.jpg" Version="" Language="" Attributes="" SourcePath="..\DOS Shell Rollout\Required Files\Inputs\Splash_Image.jpg" SelfReg="false"/>
+    <ROW File="config.ini" Component_="config.ini" FileName="config.ini" Version="" Language="" Attributes="" SourcePath="..\DOS Shell Rollout\Required Files\config.ini" SelfReg="false"/>
+    <ROW File="default_config.ini" Component_="config.ini" FileName="defaul~1.ini|default_config.ini" Version="" Language="" Attributes="" SourcePath="..\DOS Shell Rollout\Required Files\default_config.ini" SelfReg="false"/>
+    <ROW File="DOS_Shell_Rollout.exe" Component_="DOS_Shell_Rollout.exe" FileName="DOSShe~1.exe|DOS Shell Rollout.exe" Version="" Language="" Attributes="" SourcePath="..\DOS Shell Rollout\Required Files\DOS Shell Rollout.exe" SelfReg="false"/>
+    <ROW File="Inputs.txt" Component_="Application_Icon.ico" FileName="Inputs.txt" Version="" Language="" Attributes="" SourcePath="..\DOS Shell Rollout\Required Files\Inputs\Inputs.txt" SelfReg="false"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
+    <ROW Action="AI_DOWNGRADE" Type="19" Source="" Target="A higher version of [ProductName] is installed."/>
+    <ROW Action="AI_ViewReadme" Type="194" Source="viewer.exe" Target="[#Description.txt]"/>
+    <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]"/>
+    <ROW Action="AI_LaunchApp" Type="194" Source="viewer.exe" Target="[#Application_Loader.exe]"/>
+    <ROW Action="SET_TARGETDIR" Type="307" Source="TARGETDIR" Target="[ProgramFilesFolder]\[ProductName]"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiUpgradeComponent">
+    <ROW UpgradeCode="UpgradeCode" VersionMin="" VersionMax="ProductVersion" Language="" Attributes="1025" Remove=""/>
+    <ROW UpgradeCode="UpgradeCode" VersionMin="ProductVersion" VersionMax="" Language="" Attributes="2" Remove=""/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiMergeModsComponent">
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiShortsComponent">
+    <ROW Shortcut="DOS_Shell_Rollout" Directory_="StartupFolder" Name="DOSShe~1|DOS Shell Rollout" Component_="Application_Icon.ico" Target="[TARGETDIR]Application_Loader.exe" Arguments="" Description="" Hotkey="0" Icon_="controlPanelIcon.exe" IconIndex="0" ShowCmd="1" WkDir=""/>
+    <ROW Shortcut="Uninstall_DOS_Shell_Rollout" Directory_="TARGETDIR" Name="Uninst~1|Uninstall DOS Shell Rollout" Component_="Application_Icon.ico" Target="[SystemFolder]msiexec.exe" Arguments="/x [ProductCode]" Description="" Hotkey="0" Icon_="SystemFolder_msiexec.exe" IconIndex="0" ShowCmd="1" WkDir=""/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
+    <ROW Name="SystemFolder_msiexec.exe" SourcePath="&lt;uninstall.ico&gt;" Index="0"/>
+    <ROW Name="controlPanelIcon.exe" SourcePath="Images\Application_Icon.ico" Index="0"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstExSeqComponent">
+    <ROW Action="AI_DOWNGRADE" Condition="AI_NEWERPRODUCTFOUND AND (UILevel &lt;&gt; 5)" Sequence="210"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiBinaryComponent">
+    <ROW Name="installer_background.jpg" SourcePath="Images\installer_background.jpg"/>
+    <ROW Name="installer_background_dialog.jpg" SourcePath="Images\installer_background_dialog.jpg"/>
+    <ROW Name="viewer.exe" SourcePath="&lt;viewer.exe&gt;"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
+    <ATTRIBUTE name="Start" value="WelcomeDlg FolderDlg VerifyReadyDlg"/>
+    <ATTRIBUTE name="Progress" value="ProgressDlg"/>
+    <ATTRIBUTE name="End" value="ExitDialog"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.PreReqComponent">
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiMediaComponent">
+    <ATTRIBUTE name="InstallationType" value="1"/>
+    <ATTRIBUTE name="MediaSize" value="0"/>
+    <ATTRIBUTE name="Compress" value="1"/>
+    <ATTRIBUTE name="Package" value="10"/>
+    <ATTRIBUTE name="PackageName" value="Release\DOS Shell Rollout Installer"/>
+    <ATTRIBUTE name="IconPath" value="Images\Application_Icon.ico?0"/>
+  </COMPONENT>
+</DOCUMENT>
